@@ -1,8 +1,3 @@
-20.times do
-  Article.create!(
-    title: Faker::Quote.matz
-  )
-end
 
 
 User.create!(
@@ -21,5 +16,12 @@ User.create!(
     password_confirmation: "secrete",
     name: Faker::Name.name,
     image: Faker::Avatar.image
+  )
+end
+
+20.times do
+  Article.create!(
+    title: Faker::Quote.matz,
+    user: User.all.sample,
   )
 end
