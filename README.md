@@ -41,6 +41,7 @@
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactjs.org/">HTML & CSS</a></li>
+    <li><a href="https://reactjs.org/">Tailwind CSS</a></li>
   </ul>
 </details>
 
@@ -91,19 +92,17 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone https://github.com/learnwithalfred
+  git https://github.com/learnwithalfred/live-search.git
 ```
-
--
 
 ### Install
 
 Install this project with:
 
 ```sh
-  cd rails-real-time-search
+  cd live-search
   gem install
-  rails db:create && rails db:migrate && rails db:seed
+  rails db:setup
 ```
 
 ### Usage
@@ -111,7 +110,7 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-  rails server
+  bin/dev
 ```
 
 ### Run tests
