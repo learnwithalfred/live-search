@@ -1,7 +1,6 @@
 <%= form_with(url: articles_path, method: :get, data: {controller: "search-form", turbo_frame: "articles", turbo_action: "advance"}) do |form| %>
   <div class="flex space-x-3">
-    <%= form.text_field :query, class: "py-3 px-4 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", data: {action: "input->search-form#search"}, placeholder:"Search here ..." %>
+    <%= form.text_field :query, class: " px-4 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", data: {action: "input->search-form#search"}, placeholder:"Search here ..." %>
 
-    <%= form.submit 'Search', class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
   </div>
 <% end %>
