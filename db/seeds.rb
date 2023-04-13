@@ -1,7 +1,14 @@
 
-
 User.create!(
   email: "test@example.com",
+  password: "secrete",
+  password_confirmation: "secrete",
+  name: Faker::Name.name,
+  image: Faker::Avatar.image
+)
+
+User.create!(
+  email: "lydia@example.com",
   password: "secrete",
   password_confirmation: "secrete",
   name: Faker::Name.name,
@@ -19,7 +26,7 @@ User.create!(
   )
 end
 
-20.times do
+10.times do
   Article.create!(
     title: Faker::Quote.matz,
     user: User.all.sample,
