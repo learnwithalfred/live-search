@@ -71,7 +71,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Live Demo Link](https://real-time-search-9fym.onrender.com)
 
 <!-- GETTING STARTED -->
 
