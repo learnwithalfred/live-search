@@ -1,0 +1,29 @@
+<section class="py-8 px-4 md:px-0">
+  <header class="mb-4">
+    <h1 class="text-xl font-bold text-gray-800">
+      <%= pluralize(@search_results.length, 'Search') %>
+    </h1>
+  </header>
+  <div>
+    <ul class="divide-y divide-gray-200">
+      <% if @search_results.empty? %>
+        <p class="text-center text-gray-500 py-8">
+         No results found
+        </p>
+      <% else %>
+        <% @search_results.entries.each do |title, count| %>
+          <li class="py-4">
+            <article class="p-4 bg-white shadow rounded-lg">
+              <h2 class="text-lg font-bold text-gray-800">
+                <%= title%>
+              </h2>
+              <p class="text-gray-500">
+                <%= "Number of occurrence: #{count}" %>
+              </p>
+            </article>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</section>

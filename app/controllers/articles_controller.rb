@@ -1,12 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  include SearchesHelper
 
   # GET /articles or /articles.json
   def index
       if params[:query].present?
       @articles = Article.where('lower(title) Like ?', "%#{params[:query].downcase}%").paginate(per_page: 10,
                                                                                                 page: params[:page])
-      
+      create_search(params[:query], current_user.id)
     else
       @articles = Article.paginate(per_page: 10, page: params[:page])
     end
@@ -16,52 +17,6 @@ class ArticlesController < ApplicationController
   def show
   end
 
-  # GET /articles/new
-  def new
-    @article = Article.new
-  end
-
-  # GET /articles/1/edit
-  def edit
-  end
-
-  # POST /articles or /articles.json
-  def create
-    @article = Article.new(article_params)
-
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /articles/1 or /articles/1.json
-  def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /articles/1 or /articles/1.json
-  def destroy
-    @article.destroy
-
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,8 +24,18 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title)
+
+  def create_search(query, user_id)
+    return unless query.present? && query.length >= 3
+
+    new_query = Search.where(user_id:, confirmed: false).last
+
+    if new_query && params[:confirmed].present?
+      new_query.update(confirmed: true)
+    elsif new_query && same_input?(query, new_query.query)
+      new_query.update(query:)
+    else
+      Search.create(query:, user_id:)
     end
+  end
 end
