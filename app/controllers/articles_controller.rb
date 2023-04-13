@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[show edit update destroy]
   include SearchesHelper
 
   # GET /articles or /articles.json
   def index
-      if params[:query].present?
+    if params[:query].present?
       @articles = Article.where('lower(title) Like ?', "%#{params[:query].downcase}%").paginate(per_page: 10,
                                                                                                 page: params[:page])
       create_search(params[:query], current_user.id)
@@ -14,16 +14,14 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1 or /articles/1.json
-  def show
-  end
-
+  def show; end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
   def create_search(query, user_id)
     return unless query.present? && query.length >= 3
