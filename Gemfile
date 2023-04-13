@@ -75,18 +75,13 @@ gem 'devise'
 gem 'will_paginate', '~> 3.3'
 
 gem 'jaro_winkler', '~> 1.5'
-
-
 gem 'rspec-rails', '~> 6.0.0'
 
-  gem 'shoulda-matchers', '~> 5.0'
+gem 'shoulda-matchers', '~> 5.0'
 
-  gem 'rails-controller-testing'
-
-
+gem 'rails-controller-testing'
 gem 'selenium-webdriver'
 gem 'webdrivers'
+gem 'factory_bot_rails'
 
-  gem 'factory_bot_rails'
-
-  gem 'capybara'
+gem 'capybara'
