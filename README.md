@@ -29,7 +29,7 @@
 
 # 📖 Real Time Search <a name="about-project"></a>
 
-> A realtime search box, where users search articles, and then to have analytics that display what users were searching for.
+> A realtime search box, where users search quotes, and then to have analytics that display what users were searching for.
 
 **Real Time Search** is a...
 
@@ -112,6 +112,10 @@ To run the project, execute the following command:
 ```sh
   bin/dev
 ```
+
+- Create a new account or signin with the following credentials:
+  - email: `test@example.com`
+  - password: `secrete`
 
 ### Run tests
 
