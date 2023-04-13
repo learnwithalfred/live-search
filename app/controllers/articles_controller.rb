@@ -3,7 +3,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+      if params[:query].present?
+      @articles = Article.where('lower(title) Like ?', "%#{params[:query].downcase}%").paginate(per_page: 10,
+                                                                                                page: params[:page])
+      
+    else
+      @articles = Article.paginate(per_page: 10, page: params[:page])
+    end
   end
 
   # GET /articles/1 or /articles/1.json
