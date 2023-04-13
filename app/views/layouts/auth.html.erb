@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Auth Page</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
+    <section class="auth_container">
+  
+      <div class=" p-6 lg:ml-16">
+        <div class="container max-w-[1000px]">
+          <div class="flash"><%= render 'shared/flash' %> </div>
+  
+          <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-[30px]">
+            <div class="relative">
+              <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold text-center">Welcome<span class="text-indigo-600">
+                  <% if request.path == '/auth/login' %>
+                  Kindly Sign in
+                  <% else %>
+                  Kindly Sign up
+                  <% end %>
+                </span>
+  
+            </div>
+  
+            <div class="p-4 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+  </body>
+
+</html>
