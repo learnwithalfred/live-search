@@ -72,3 +72,9 @@ end
 gem 'faker'
 
 gem 'devise'
+
+# will paginage gem
+gem 'will_paginate', '~> 3.3'
+
+
+gem 'jaro_winkler', '~> 1.5'
