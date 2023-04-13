@@ -75,3 +75,6 @@ gem 'devise'
 gem 'will_paginate', '~> 3.3'
 
 gem 'jaro_winkler', '~> 1.5'
+
+
+gem 'rspec-rails', '~> 6.0.0'
