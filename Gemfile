@@ -70,3 +70,5 @@ end
 
 
 gem 'faker'
+
+gem 'devise'
